@@ -88,8 +88,7 @@ function hasContact(obs) {
     (obs.contact?.meet || 0) > 0 ||
     (obs.contact?.reply || 0) > 0 ||
     (obs.contact?.read || 0) > 0 ||
-    (obs.contact?.request || 0) > 0 ||
-    obs.instagram === "VIEWED"
+    (obs.contact?.request || 0) > 0
   );
 }
 
