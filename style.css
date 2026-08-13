@@ -116,3 +116,18 @@ textarea{width:100%;resize:vertical}
   .stat-card strong{font-size:18px}
   .section-head{align-items:center}
 }
+
+.brand-swan-wrap{
+  display:flex;
+  justify-content:center;
+  margin-top:18px;
+  margin-bottom:4px;
+}
+
+.brand-swan{
+  width:120px;
+  max-width:42vw;
+  height:auto;
+  display:block;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,.28));
+}
