@@ -346,7 +346,7 @@ function renderCalendar() {
 
 const marks = [];
 if (obs?.contact?.meet > 0) marks.push('<span class="mark meet">♥</span>');
-if (obs?.contact?.reply > 0) marks.push('<span class="mark reply">💬</span>');
+if (obs?.contact?.reply > 0) marks.push('<span class="mark reply">✉︎</span>');
 if (obs?.contact?.read > 0) marks.push('<span class="mark read">✓</span>');
 
 btn.innerHTML = `
