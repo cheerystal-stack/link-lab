@@ -342,7 +342,17 @@ function renderCalendar() {
     btn.className = "day";
     if (iso === todayISO()) btn.classList.add("today");
     if (observations[iso]) btn.classList.add("has-data");
-    btn.innerHTML = `<span>${day}</span>${observations[iso] ? '<i class="dot"></i>' : ''}`;
+    const obs = observations[iso];
+
+const marks = [];
+if (obs?.contact?.meet > 0) marks.push('<span class="mark meet">♥</span>');
+if (obs?.contact?.reply > 0) marks.push('<span class="mark reply">💬</span>');
+if (obs?.contact?.read > 0) marks.push('<span class="mark read">✓</span>');
+
+btn.innerHTML = `
+  <span class="day-num">${day}</span>
+  ${marks.length ? `<div class="day-marks">${marks.join("")}</div>` : (obs ? '<i class="dot"></i>' : '')}
+`;
     btn.addEventListener("click", () => {
       loadObservation(iso);
       setView("observeView");
