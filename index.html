@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#17120f" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>L.L. — Link Laboratory</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="brand">
+      <div class="crown">♛</div>
+      <div class="monogram">L.L.</div>
+      <div class="brand-name">LINK LABORATORY</div>
+      <div class="brand-sub">PRIVATE CONNECTION RESEARCH UNIT</div>
+    </header>
+
+    <main>
+      <section id="homeView" class="view active">
+        <div class="hero-card">
+          <div class="eyebrow">CURRENT SIGNAL</div>
+          <div id="signalValue" class="signal">STABLE</div>
+          <div id="signalNote" class="signal-note">OBSERVATION WITHIN NORMAL RANGE</div>
+        </div>
+
+        <div class="stat-grid">
+          <div class="stat-card"><span>THIS MONTH</span><strong id="monthPoints">0.0 PT</strong></div>
+          <div class="stat-card"><span>LAST 7 DAYS</span><strong id="weekPoints">0.0 PT</strong></div>
+          <div class="stat-card"><span>LAST CONTACT</span><strong id="lastContact">—</strong></div>
+          <div class="stat-card"><span>LAST MEET</span><strong id="lastMeet">—</strong></div>
+          <div class="stat-card wide"><span>STORY VIEW RATE</span><strong id="storyRate">—</strong></div>
+          <div class="stat-card wide"><span>REQUESTS THIS MONTH</span><strong id="monthRequests">0</strong></div>
+        </div>
+
+        <div class="section-card">
+          <div class="section-title">RECENT SIGNALS</div>
+          <div id="recentList" class="recent-list"></div>
+        </div>
+      </section>
+
+      <section id="observeView" class="view">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">OBSERVATION</div>
+            <h2 id="observeDateLabel">—</h2>
+          </div>
+          <input id="observeDate" class="date-input" type="date" />
+        </div>
+
+        <div class="section-card">
+          <div class="section-title">CONTACT</div>
+          <div class="counter-list">
+            <div class="counter-row"><span>MEET</span><div class="counter"><button data-counter="meet" data-delta="-1">−</button><strong id="meetValue">0</strong><button data-counter="meet" data-delta="1">＋</button></div></div>
+            <div class="counter-row"><span>REPLY</span><div class="counter"><button data-counter="reply" data-delta="-1">−</button><strong id="replyValue">0</strong><button data-counter="reply" data-delta="1">＋</button></div></div>
+            <div class="counter-row"><span>READ</span><div class="counter"><button data-counter="read" data-delta="-1">−</button><strong id="readValue">0</strong><button data-counter="read" data-delta="1">＋</button></div></div>
+            <div class="counter-row"><span>REQUEST</span><div class="counter"><button data-counter="request" data-delta="-1">−</button><strong id="requestValue">0</strong><button data-counter="request" data-delta="1">＋</button></div></div>
+          </div>
+
+          <div class="field-block">
+            <label>INSTAGRAM</label>
+            <div class="segmented" data-group="instagram">
+              <button data-value="VIEWED">VIEWED</button>
+              <button data-value="NOT_VIEWED">NOT VIEWED</button>
+              <button data-value="NO_STORY">NO STORY</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="section-title">CONTEXT</div>
+
+          <div class="field-block">
+            <label>WORK STATUS</label>
+            <div class="segmented wrap" data-group="work">
+              <button data-value="DAY">DAY</button>
+              <button data-value="OFF">OFF</button>
+              <button data-value="OTHER">OTHER</button>
+              <button data-value="UNKNOWN">UNKNOWN</button>
+            </div>
+          </div>
+
+          <div class="field-block">
+            <label>DUTY STATUS</label>
+            <div class="segmented wrap" data-group="duty">
+              <button data-value="NONE">NONE</button>
+              <button data-value="NIGHT_DUTY">NIGHT DUTY</button>
+              <button data-value="POST_DUTY">POST DUTY</button>
+              <button data-value="UNKNOWN">UNKNOWN</button>
+            </div>
+          </div>
+
+          <div class="field-block">
+            <label>SOURCE</label>
+            <div class="segmented wrap" data-group="source">
+              <button data-value="CONFIRMED">CONFIRMED</button>
+              <button data-value="INFERRED">INFERRED</button>
+              <button data-value="UNKNOWN">UNKNOWN</button>
+            </div>
+          </div>
+
+          <div class="field-block">
+            <label for="scheduleNote">SCHEDULE NOTE</label>
+            <textarea id="scheduleNote" rows="3" placeholder="本人のひとこと、当直、実家、飲み会など"></textarea>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="section-title">EVENT</div>
+          <div class="chips" id="eventChips">
+            <button data-event="MEET">MEET</button>
+            <button data-event="STAY">STAY</button>
+            <button data-event="TALK">TALK</button>
+            <button data-event="TENSION">TENSION</button>
+            <button data-event="REPAIR">REPAIR</button>
+            <button data-event="IMPORTANT">IMPORTANT</button>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="section-title">CHIAKI STATUS</div>
+
+          <div class="field-block">
+            <label>MOOD</label>
+            <div class="mood-row" id="moodRow">
+              <button data-mood="1">😵‍💫</button>
+              <button data-mood="2">😕</button>
+              <button data-mood="3">😐</button>
+              <button data-mood="4">🙂</button>
+              <button data-mood="5">😌</button>
+            </div>
+          </div>
+
+          <div class="field-block">
+            <label for="memo">LAB NOTE</label>
+            <textarea id="memo" rows="5" placeholder="その日の出来事、感じたこと、重要な観測メモ"></textarea>
+          </div>
+        </div>
+
+        <div class="score-preview">
+          <span>POINT</span>
+          <strong id="scorePreview">0.0</strong>
+        </div>
+
+        <div class="action-row">
+          <button id="saveBtn" class="primary">SAVE OBSERVATION</button>
+          <button id="saveNextBtn" class="secondary">SAVE → NEXT DAY</button>
+        </div>
+      </section>
+
+      <section id="archiveView" class="view">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">ARCHIVE</div>
+            <h2>CONNECTION HISTORY</h2>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="calendar-head">
+            <button id="prevMonth">‹</button>
+            <strong id="calendarTitle">—</strong>
+            <button id="nextMonth">›</button>
+          </div>
+          <div class="weekday-row">
+            <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+          </div>
+          <div id="calendarGrid" class="calendar-grid"></div>
+        </div>
+
+        <div class="section-card">
+          <div class="section-title">PAST INPUT MODE</div>
+          <p class="muted">日付をタップして OBSERVE を開き、保存後に「SAVE → NEXT DAY」で連続入力できます。</p>
+        </div>
+      </section>
+
+      <section id="settingsView" class="view">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">LAB SETTINGS</div>
+            <h2>SCORING & DATA</h2>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="section-title">POINT SETTINGS</div>
+          <div class="settings-grid">
+            <label>MEET <input id="scoreMeet" type="number" step="0.5" /></label>
+            <label>REPLY <input id="scoreReply" type="number" step="0.5" /></label>
+            <label>READ <input id="scoreRead" type="number" step="0.5" /></label>
+            <label>VIEWED <input id="scoreViewed" type="number" step="0.5" /></label>
+            <label>REQUEST <input id="scoreRequest" type="number" step="0.5" /></label>
+          </div>
+          <button id="saveSettingsBtn" class="primary">SAVE SETTINGS</button>
+        </div>
+
+        <div class="section-card">
+          <div class="section-title">BACKUP</div>
+          <div class="stack">
+            <button id="exportBtn" class="secondary">EXPORT JSON</button>
+            <label class="file-button">IMPORT JSON<input id="importInput" type="file" accept="application/json" /></label>
+          </div>
+          <p class="muted">長期データ保護のため、定期的にExport推奨。</p>
+        </div>
+
+        <div class="section-card danger-zone">
+          <div class="section-title">DANGER ZONE</div>
+          <button id="clearBtn" class="danger">CLEAR ALL LOCAL DATA</button>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button data-view="homeView" class="active">HOME</button>
+      <button data-view="observeView">OBSERVE</button>
+      <button data-view="archiveView">ARCHIVE</button>
+      <button data-view="settingsView">SETTINGS</button>
+    </nav>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
