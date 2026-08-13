@@ -120,14 +120,14 @@ textarea{width:100%;resize:vertical}
 .brand-swan-wrap{
   display:flex;
   justify-content:center;
-  margin-top:12px;
-  margin-bottom:8px;
+  margin-top:14px;
+  margin-bottom:10px;
 }
 
 .brand-swan{
-  width:72px;
-  max-width:72vw;
+  width:100px;
+  max-width:100px;
   height:auto;
   display:block;
-  filter: drop-shadow(0 8px 16px rgba(0,0,0,.28));
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,.28));
 }
