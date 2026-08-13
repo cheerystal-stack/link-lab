@@ -98,6 +98,49 @@ textarea{width:100%;resize:vertical}
 .day.has-data{border-color:var(--gold-soft)}
 .day.today{outline:1px solid var(--gold)}
 .day .dot{position:absolute;right:6px;bottom:6px;width:6px;height:6px;background:var(--gold);border-radius:50%}
+.day{
+  min-height:54px;
+  border:1px solid transparent;
+  background:#120e0c;
+  border-radius:10px;
+  color:var(--ink);
+  position:relative;
+  padding:8px 5px 20px;
+  text-align:left;
+}
+
+.day-num{
+  font-size:13px;
+}
+
+.day-marks{
+  position:absolute;
+  left:4px;
+  right:4px;
+  bottom:4px;
+  display:flex;
+  justify-content:center;
+  gap:4px;
+  flex-wrap:wrap;
+}
+
+.mark{
+  font-size:10px;
+  line-height:1;
+  color:var(--gold);
+}
+
+.mark.meet{
+  color:#f1b6c8;
+}
+
+.mark.reply{
+  color:var(--gold);
+}
+
+.mark.read{
+  color:#9fd3ff;
+}
 .settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
 .settings-grid label{display:grid;gap:6px;font-size:10px;letter-spacing:.12em;color:var(--muted)}
 .settings-grid input{width:100%}
