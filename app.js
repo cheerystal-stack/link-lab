@@ -351,7 +351,7 @@ if (obs?.contact?.read > 0) marks.push('<span class="mark read">✓</span>');
 
 btn.innerHTML = `
   <span class="day-num">${day}</span>
-  ${marks.length ? `<div class="day-marks">${marks.join("")}</div>` : (obs ? '<i class="dot"></i>' : '')}
+  ${marks.length ? `<div class="day-marks">${marks.join("")}</div>` : ''}
 `;
     btn.addEventListener("click", () => {
       loadObservation(iso);
