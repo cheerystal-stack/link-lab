@@ -9,8 +9,28 @@ const defaultSettings = {
   request: 0
 };
 
+const BATTERY_SETTINGS_KEY = "ll_battery_settings_v1";
+
+const defaultBatterySettings = {
+  dailyDrain: 8,
+  afterMeetDrain: 5,
+  unreadDrain: 15,
+  readCharge: 3,
+  replyCharge: 5,
+  storyCharge: 0.5,
+  requestCharge: 8,
+  meetCharge: 100,
+  stayCharge: 110
+};
+
 let observations = loadJSON(STORAGE_KEY, {});
 let settings = { ...defaultSettings, ...loadJSON(SETTINGS_KEY, {}) };
+
+let batterySettings = {
+  ...defaultBatterySettings,
+  ...loadJSON(BATTERY_SETTINGS_KEY, {})
+};
+
 let draft = blankObservation(todayISO());
 let calendarCursor = new Date();
 
