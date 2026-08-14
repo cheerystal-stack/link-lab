@@ -53,6 +53,7 @@ function blankObservation(date) {
   return {
     date,
     contact: { meet: 0, reply: 0, read: 0, request: 0 },
+    lineStatus: "NONE",
     instagram: "NO_STORY",
     context: {
       work: "UNKNOWN",
@@ -137,6 +138,7 @@ function renderDraft() {
     document.getElementById(`${key}Value`).textContent = draft.contact[key] || 0;
   }
 
+  activateGroup("lineStatus", draft.lineStatus || "NONE");
   activateGroup("instagram", draft.instagram);
   activateGroup("work", draft.context.work);
   activateGroup("duty", draft.context.duty);
@@ -175,6 +177,7 @@ document.querySelectorAll("[data-group]").forEach(group => {
     btn.addEventListener("click", () => {
       const g = group.dataset.group;
       const value = btn.dataset.value;
+      if (g === "lineStatus") draft.lineStatus = value;
       if (g === "instagram") draft.instagram = value;
       if (g === "work") draft.context.work = value;
       if (g === "duty") draft.context.duty = value;
