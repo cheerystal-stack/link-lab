@@ -30,6 +30,19 @@
           <div id="signalNote" class="signal-note">OBSERVATION WITHIN NORMAL RANGE</div>
         </div>
 
+        <div class="battery-card">
+  <div class="battery-head">
+    <span>CHIAKI BATTERY</span>
+    <strong id="batteryPercent">100%</strong>
+  </div>
+
+  <div class="battery-shell">
+    <div id="batteryFill" class="battery-fill"></div>
+  </div>
+
+  <div id="batteryStatus" class="battery-status">FULL CHARGE</div>
+</div>
+
         <div class="stat-grid">
           <div class="stat-card"><span>THIS MONTH</span><strong id="monthPoints">0.0 PT</strong></div>
           <div class="stat-card"><span>LAST 7 DAYS</span><strong id="weekPoints">0.0 PT</strong></div>
@@ -62,6 +75,14 @@
             <div class="counter-row"><span>READ</span><div class="counter"><button data-counter="read" data-delta="-1">−</button><strong id="readValue">0</strong><button data-counter="read" data-delta="1">＋</button></div></div>
             <div class="counter-row"><span>REQUEST</span><div class="counter"><button data-counter="request" data-delta="-1">−</button><strong id="requestValue">0</strong><button data-counter="request" data-delta="1">＋</button></div></div>
           </div>
+
+          <div class="field-block">
+  <label>LINE STATUS</label>
+  <div class="segmented" data-group="lineStatus">
+    <button data-value="NONE">NONE</button>
+    <button data-value="UNREAD">UNREAD</button>
+  </div>
+</div>
 
           <div class="field-block">
             <label>INSTAGRAM</label>
@@ -199,6 +220,52 @@
           </div>
           <button id="saveSettingsBtn" class="primary">SAVE SETTINGS</button>
         </div>
+
+        <div class="section-card">
+  <div class="section-title">BATTERY SETTINGS</div>
+
+  <div class="settings-grid">
+    <label>DAILY DRAIN
+      <input id="batteryDailyDrain" type="number" step="0.5" />
+    </label>
+
+    <label>AFTER MEET
+      <input id="batteryAfterMeetDrain" type="number" step="0.5" />
+    </label>
+
+    <label>UNREAD 3+ DAYS
+      <input id="batteryUnreadDrain" type="number" step="0.5" />
+    </label>
+
+    <label>READ CHARGE
+      <input id="batteryReadCharge" type="number" step="0.5" />
+    </label>
+
+    <label>REPLY CHARGE
+      <input id="batteryReplyCharge" type="number" step="0.5" />
+    </label>
+
+    <label>STORY VIEW
+      <input id="batteryStoryCharge" type="number" step="0.5" />
+    </label>
+
+    <label>REQUEST CHARGE
+      <input id="batteryRequestCharge" type="number" step="0.5" />
+    </label>
+
+    <label>MEET CHARGE
+      <input id="batteryMeetCharge" type="number" step="1" />
+    </label>
+
+    <label>STAY OVERCHARGE
+      <input id="batteryStayCharge" type="number" step="1" />
+    </label>
+  </div>
+
+  <button id="saveBatterySettingsBtn" class="primary">
+    SAVE BATTERY SETTINGS
+  </button>
+</div>
 
         <div class="section-card">
           <div class="section-title">BACKUP</div>
