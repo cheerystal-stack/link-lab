@@ -520,6 +520,27 @@ document.getElementById("saveSettingsBtn").addEventListener("click", () => {
   flash("SETTINGS SAVED");
 });
 
+document.getElementById("saveBatterySettingsBtn").addEventListener("click", () => {
+  batterySettings = {
+    dailyDrain: Number(document.getElementById("batteryDailyDrain").value || 0),
+    afterMeetDrain: Number(document.getElementById("batteryAfterMeetDrain").value || 0),
+    unreadDrain: Number(document.getElementById("batteryUnreadDrain").value || 0),
+    readCharge: Number(document.getElementById("batteryReadCharge").value || 0),
+    replyCharge: Number(document.getElementById("batteryReplyCharge").value || 0),
+    storyCharge: Number(document.getElementById("batteryStoryCharge").value || 0),
+    requestCharge: Number(document.getElementById("batteryRequestCharge").value || 0),
+    meetCharge: Number(document.getElementById("batteryMeetCharge").value || 0),
+    stayCharge: Number(document.getElementById("batteryStayCharge").value || 0)
+  };
+
+  saveJSON(BATTERY_SETTINGS_KEY, batterySettings);
+
+  renderBattery();
+  renderSettings();
+
+  flash("BATTERY SETTINGS SAVED");
+});
+
 document.getElementById("exportBtn").addEventListener("click", () => {
   const payload = {
     app: "L.L. Link Laboratory",
