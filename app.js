@@ -82,6 +82,62 @@ function scoreOf(obs) {
   );
 }
 
+function calculateBatteryHistory() {
+  const all = Object.values(observations)
+    .sort((a, b) => a.date.localeCompare(b.date));
+
+  let battery = 100;
+  let unreadStreak = 0;
+  let previousDayHadMeet = false;
+
+  const history = {};
+
+  for (const obs of all) {
+
+    if ((obs.lineStatus || "NONE") === "UNREAD") {
+      unreadStreak++;
+    } else {
+      unreadStreak = 0;
+    }
+
+    let drain = batterySettings.dailyDrain;
+
+    if (previousDayHadMeet) {
+      drain = batterySettings.afterMeetDrain;
+    }
+
+    if (unreadStreak >= 3) {
+      drain = batterySettings.unreadDrain;
+    }
+
+    battery -= drain;
+
+    battery += (obs.contact?.read || 0) * batterySettings.readCharge;
+    battery += (obs.contact?.reply || 0) * batterySettings.replyCharge;
+    battery += (obs.contact?.request || 0) * batterySettings.requestCharge;
+
+    if (obs.instagram === "VIEWED") {
+      battery += batterySettings.storyCharge;
+    }
+
+    if ((obs.contact?.meet || 0) > 0) {
+      battery = batterySettings.meetCharge;
+    }
+
+    if (obs.events?.includes("STAY")) {
+      battery = batterySettings.stayCharge;
+    }
+
+    battery = Math.max(0, Math.min(battery, batterySettings.stayCharge));
+
+    history[obs.date] = battery;
+
+    previousDayHadMeet = (obs.contact?.meet || 0) > 0;
+  }
+
+  return history;
+}
+
 function formatDateLabel(iso) {
   const d = new Date(iso + "T00:00:00");
   return new Intl.DateTimeFormat("en-US", {
@@ -227,9 +283,16 @@ document.getElementById("saveBtn").addEventListener("click", () => {
 
 document.getElementById("saveNextBtn").addEventListener("click", () => {
   persistDraft();
+
   const d = new Date(draft.date + "T00:00:00");
   d.setDate(d.getDate() + 1);
+
   loadObservation(localISO(d));
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 });
 
 function localISO(d) {
