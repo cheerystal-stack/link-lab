@@ -137,6 +137,37 @@ function calculateBatteryHistory() {
 
   return history;
 }
+function renderBattery() {
+  const history = calculateBatteryHistory();
+  const dates = Object.keys(history).sort();
+
+  let battery = 100;
+
+  if (dates.length) {
+    battery = history[dates[dates.length - 1]];
+  }
+
+  const percentEl = document.getElementById("batteryPercent");
+  const fillEl = document.getElementById("batteryFill");
+  const statusEl = document.getElementById("batteryStatus");
+
+  percentEl.textContent = `${battery.toFixed(1)}%`;
+
+  const fillWidth = Math.min(battery, 100);
+  fillEl.style.width = `${fillWidth}%`;
+
+  if (battery > 100) {
+    statusEl.textContent = "OVERCHARGE ♡";
+  } else if (battery >= 80) {
+    statusEl.textContent = "FULL CHARGE";
+  } else if (battery >= 50) {
+    statusEl.textContent = "STABLE";
+  } else if (battery >= 20) {
+    statusEl.textContent = "LOW BATTERY";
+  } else {
+    statusEl.textContent = "CRITICAL";
+  }
+}
 
 function formatDateLabel(iso) {
   const d = new Date(iso + "T00:00:00");
@@ -334,6 +365,7 @@ function renderHome() {
 
   renderSignal(lastContactDate, weekPts, all);
   renderRecent(all);
+  renderBattery();
 }
 
 function renderSignal(lastContactDate, weekPts, all) {
