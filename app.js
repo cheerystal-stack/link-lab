@@ -494,6 +494,16 @@ function renderSettings() {
   document.getElementById("scoreRead").value = settings.read;
   document.getElementById("scoreViewed").value = settings.viewed;
   document.getElementById("scoreRequest").value = settings.request;
+
+  document.getElementById("batteryDailyDrain").value = batterySettings.dailyDrain;
+  document.getElementById("batteryAfterMeetDrain").value = batterySettings.afterMeetDrain;
+  document.getElementById("batteryUnreadDrain").value = batterySettings.unreadDrain;
+  document.getElementById("batteryReadCharge").value = batterySettings.readCharge;
+  document.getElementById("batteryReplyCharge").value = batterySettings.replyCharge;
+  document.getElementById("batteryStoryCharge").value = batterySettings.storyCharge;
+  document.getElementById("batteryRequestCharge").value = batterySettings.requestCharge;
+  document.getElementById("batteryMeetCharge").value = batterySettings.meetCharge;
+  document.getElementById("batteryStayCharge").value = batterySettings.stayCharge;
 }
 
 document.getElementById("saveSettingsBtn").addEventListener("click", () => {
