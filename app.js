@@ -1,5 +1,7 @@
 const STORAGE_KEY = "ll_observations_v1";
 const SETTINGS_KEY = "ll_settings_v1";
+const LOGS_KEY = "ll_logs";
+let logs = loadJSON(LOGS_KEY, []);
 
 const defaultSettings = {
   meet: 5,
@@ -244,6 +246,36 @@ function renderDraft() {
 
   document.getElementById("scorePreview").textContent = scoreOf(draft).toFixed(1);
 }
+function renderLogs() {
+  const list = document.getElementById("logList");
+  if (!list) return;
+
+  list.innerHTML = "";
+
+  const sorted = [...logs].sort(
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+  );
+
+  sorted.forEach(log => {
+    const item = document.createElement("div");
+    item.className = "log-item";
+
+    const date = new Date(log.createdAt);
+
+    item.innerHTML = `
+      <div class="log-time">
+        ${date.toLocaleDateString("ja-JP")} ${date.toLocaleTimeString("ja-JP", {
+          hour: "2-digit",
+          minute: "2-digit"
+        })}
+      </div>
+      <div class="log-text"></div>
+    `;
+
+    item.querySelector(".log-text").textContent = log.text;
+    list.appendChild(item);
+  });
+}
 
 function activateGroup(group, value) {
   document.querySelectorAll(`[data-group="${group}"] button`).forEach(btn => {
@@ -324,6 +356,24 @@ document.getElementById("saveNextBtn").addEventListener("click", () => {
     top: 0,
     behavior: "smooth"
   });
+});
+
+document.getElementById("logPostBtn")?.addEventListener("click", () => {
+  const input = document.getElementById("logInput");
+  const text = input.value.trim();
+
+  if (!text) return;
+
+  logs.push({
+    id: Date.now(),
+    text,
+    createdAt: new Date().toISOString()
+  });
+
+  saveJSON(LOGS_KEY, logs);
+
+  input.value = "";
+  renderLogs();
 });
 
 function localISO(d) {
