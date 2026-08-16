@@ -280,3 +280,36 @@ textarea{width:100%;resize:vertical}
   font-weight:500;
   color:var(--gold);
 }
+.log-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+
+.log-delete{
+  border:0;
+  background:transparent;
+  color:var(--muted);
+  font-size:18px;
+  padding:2px 6px;
+}
+
+.log-delete:hover{
+  color:var(--danger);
+}
+/* LAB LOG */
+.log-time{
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: .06em;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.log-text{
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text);
+  margin-top: 4px;
+}
