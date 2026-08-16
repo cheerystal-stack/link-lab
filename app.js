@@ -358,7 +358,7 @@ document.getElementById("saveNextBtn").addEventListener("click", () => {
   });
 });
 
-document.getElementById("logPostBtn")?.addEventListener("click", () => {
+document.getElementById("postLogBtn")?.addEventListener("click", () => {
   const input = document.getElementById("logInput");
   const text = input.value.trim();
 
