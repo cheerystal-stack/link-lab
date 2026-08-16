@@ -438,6 +438,17 @@ function renderRecent(all) {
 function renderCalendar() {
   const year = calendarCursor.getFullYear();
   const month = calendarCursor.getMonth();
+    const monthPrefix =
+    `${year}-${String(month + 1).padStart(2, "0")}`;
+
+  const monthObservations = Object.values(observations)
+    .filter(o => o.date.startsWith(monthPrefix));
+
+  const monthPoints = monthObservations
+    .reduce((sum, o) => sum + scoreOf(o), 0);
+
+  document.getElementById("archiveMonthPoints").textContent =
+    `${monthPoints.toFixed(1)} PT`;
   const first = new Date(year, month, 1);
   const last = new Date(year, month+1, 0);
 
