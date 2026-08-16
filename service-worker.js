@@ -1,4 +1,4 @@
-const CACHE = "ll-v5";
+const CACHE = "ll-v8";
 const ASSETS = ["./","./index.html","./style.css","./app.js","./manifest.json"];
 
 self.addEventListener("install", event => {
