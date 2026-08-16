@@ -257,3 +257,26 @@ textarea{width:100%;resize:vertical}
   letter-spacing:.14em;
   color:#d998ad;
 }
+.archive-month-summary{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin:0 0 14px;
+  padding:11px 14px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#120e0c;
+}
+
+.archive-month-summary span{
+  font-size:9px;
+  letter-spacing:.18em;
+  color:var(--muted);
+}
+
+.archive-month-summary strong{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:18px;
+  font-weight:500;
+  color:var(--gold);
+}
