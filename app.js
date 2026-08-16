@@ -263,16 +263,27 @@ function renderLogs() {
     const date = new Date(log.createdAt);
 
     item.innerHTML = `
-      <div class="log-time">
-        ${date.toLocaleDateString("ja-JP")} ${date.toLocaleTimeString("ja-JP", {
-          hour: "2-digit",
-          minute: "2-digit"
-        })}
-      </div>
-      <div class="log-text"></div>
-    `;
+  <div class="log-head">
+    <div class="log-time">
+      ${date.toLocaleDateString("ja-JP")} ${date.toLocaleTimeString("ja-JP", {
+        hour: "2-digit",
+        minute: "2-digit"
+      })}
+    </div>
+    <button class="log-delete" data-log-id="${log.id}">×</button>
+  </div>
+
+  <div class="log-text"></div>
+`;
 
     item.querySelector(".log-text").textContent = log.text;
+    item.querySelector(".log-delete").addEventListener("click", () => {
+  if (!confirm("このログを削除しますか？")) return;
+
+  logs = logs.filter(x => x.id !== log.id);
+  saveJSON(LOGS_KEY, logs);
+  renderLogs();
+});
     list.appendChild(item);
   });
 }
