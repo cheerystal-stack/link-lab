@@ -447,11 +447,13 @@ function renderCalendar() {
   const grid = document.getElementById("calendarGrid");
   grid.innerHTML = "";
 
-  for (let i=0; i<first.getDay(); i++) {
-    const blank = document.createElement("div");
-    blank.className = "day empty";
-    grid.appendChild(blank);
-  }
+  const startOffset = (first.getDay() + 6) % 7;
+
+for (let i=0; i<startOffset; i++) {
+  const blank = document.createElement("div");
+  blank.className = "day empty";
+  grid.appendChild(blank);
+}
 
   for (let day=1; day<=last.getDate(); day++) {
     const d = new Date(year,month,day);
