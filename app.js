@@ -106,7 +106,7 @@ function calculateBatteryHistory() {
       drain = batterySettings.afterMeetDrain;
     }
 
-    if (unreadStreak >= 3) {
+    if (unreadStreak >= 4) {
       drain = batterySettings.unreadDrain;
     }
 
