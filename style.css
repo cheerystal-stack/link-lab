@@ -145,7 +145,7 @@ textarea{width:100%;resize:vertical}
 .settings-grid input{width:100%}
 .danger-zone{border-color:rgba(197,110,102,.35)}
 .bottom-nav{
-  position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:min(760px,100%);display:grid;grid-template-columns:repeat(4,1fr);
+  position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:min(760px,100%);display:grid;grid-template-columns:repeat(5,1fr);
   padding:10px 10px calc(10px + env(safe-area-inset-bottom));
   background:rgba(18,14,12,.94);backdrop-filter:blur(16px);border-top:1px solid var(--line);z-index:20
 }
