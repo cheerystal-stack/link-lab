@@ -178,6 +178,43 @@
         </div>
       </section>
 
+      <section id="logView" class="view">
+
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">FIELD NOTES</div>
+      <h2>LAB LOG</h2>
+    </div>
+  </div>
+
+  <div class="section-card">
+
+    <div class="field-block" style="margin-top:0">
+      <label>WHAT'S HAPPENING?</label>
+
+      <textarea
+        id="logInput"
+        rows="3"
+        maxlength="280"
+        placeholder="今のことを、ひとこと。"
+      ></textarea>
+    </div>
+
+    <button id="postLogBtn" class="primary" style="width:100%;margin-top:12px;">
+      POST TO LAB
+    </button>
+
+  </div>
+
+  <div class="section-card">
+    <div class="section-title">RECENT LOGS</div>
+    <div id="logList" class="lab-log-list">
+      <div class="muted">まだログはありません。</div>
+    </div>
+  </div>
+
+</section>
+
       <section id="archiveView" class="view">
         <div class="section-head">
           <div>
