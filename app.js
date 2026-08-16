@@ -208,6 +208,7 @@ function setView(viewId) {
   if (viewId === "homeView") renderHome();
   if (viewId === "archiveView") renderCalendar();
   if (viewId === "settingsView") renderSettings();
+  if (viewId === "logView") renderLogs();
 }
 
 document.querySelectorAll(".bottom-nav button").forEach(btn => {
@@ -676,5 +677,7 @@ if ("serviceWorker" in navigator) {
 
 loadObservation(todayISO());
 renderHome();
+renderLogs();
 renderCalendar();
 renderSettings();
+
