@@ -200,6 +200,12 @@ function hasContact(obs) {
     (obs.contact?.request || 0) > 0
   );
 }
+function hasSignal(obs) {
+  return !!obs && (
+    (obs.contact?.read || 0) > 0 ||
+    obs.instagram === "VIEWED"
+  );
+}
 
 function setView(viewId) {
   document.querySelectorAll(".view").forEach(v => v.classList.toggle("active", v.id === viewId));
