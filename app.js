@@ -411,14 +411,18 @@ function renderHome() {
   document.getElementById("weekPoints").textContent = `${weekPts.toFixed(1)} PT`;
   document.getElementById("monthRequests").textContent = thisMonth.reduce((s,o)=>s+(o.contact?.request||0),0);
 
-  const contactDates = all.filter(hasContact).map(o => o.date);
-  const meetDates = all.filter(o => (o.contact?.meet||0) > 0).map(o => o.date);
-  const lastContactDate = contactDates.at(-1);
-  const lastMeetDate = meetDates.at(-1);
+  const signalDates = all.filter(hasSignal).map(o => o.date);
+const contactDates = all.filter(hasContact).map(o => o.date);
+const meetDates = all.filter(o => (o.contact?.meet || 0) > 0).map(o => o.date);
 
-  document.getElementById("lastContact").textContent = humanDays(lastContactDate);
-  document.getElementById("lastMeet").textContent = humanDays(lastMeetDate);
+const lastSignalDate = signalDates.at(-1);
+const lastContactDate = contactDates.at(-1);
+const lastMeetDate = meetDates.at(-1);
 
+  document.getElementById("lastSignal").textContent = humanDays(lastSignalDate);
+document.getElementById("lastContact").textContent = humanDays(lastContactDate);
+document.getElementById("lastMeet").textContent = humanDays(lastMeetDate);
+  
   const storyDays = thisMonth.filter(o => o.instagram === "VIEWED" || o.instagram === "NOT_VIEWED");
   const viewed = storyDays.filter(o => o.instagram === "VIEWED").length;
   const rate = storyDays.length ? Math.round(viewed/storyDays.length*100) : null;
