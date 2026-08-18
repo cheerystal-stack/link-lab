@@ -344,3 +344,17 @@ textarea{width:100%;resize:vertical}
 .connection-grid .stat-card strong{
   font-size:clamp(15px,4vw,22px);
 }
+@media (max-width: 600px) {
+  .connection-grid .stat-card {
+    padding: 14px 8px;
+  }
+
+  .connection-grid .stat-card span {
+    font-size: 11px;
+  }
+
+  .connection-grid .stat-card strong {
+    font-size: 17px;
+    line-height: 1.15;
+  }
+}
