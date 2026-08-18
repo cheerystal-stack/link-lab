@@ -329,3 +329,17 @@ textarea{width:100%;resize:vertical}
   font-size:18px;
   padding:2px 6px;
 }
+.connection-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.connection-grid .stat-card {
+  min-width: 0;
+}
+
+.connection-grid .stat-card strong {
+  font-size: clamp(20px, 4vw, 30px);
+}
